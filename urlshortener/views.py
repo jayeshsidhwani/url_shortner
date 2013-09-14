@@ -14,6 +14,7 @@ def home(request, code):
     else:
         url_object = ast.literal_eval(url_object)
         url_object['clicks'] = url_object['clicks'] + 1
+        print url_object['clicks']
         store_object.create(code, url_object)
         return HttpResponseRedirect(url_object['url'])
 
