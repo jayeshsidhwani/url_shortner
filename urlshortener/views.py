@@ -19,16 +19,16 @@ def home(request, code):
         return HttpResponseRedirect(url_object['url'])
 
 def create(request):
-    url = request.GET.get('url')
-    short_code = hashlib.sha1(url).hexdigest()[0:6]
+    long_url = request.GET.get('url')
+    short_code = hashlib.sha1(long_url).hexdigest()[0:6]
     store_object = Urls()
     url = store_object.fetch(short_code)
 
     if url is None:
-        url = { 'url': url, 'created_at': int(time.time()),
+        url = { 'url': long_url, 'created_at': int(time.time()),
                 'clicks': 0, 'short_url': SHORT_URL_HOST %short_code }
         store_object.create(short_code, url)
     else:
         print 'Object already exists'
 
-    return HttpResponse(short_code)
+    return HttpResponse(SHORT_URL_HOST %short_code)
