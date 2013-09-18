@@ -10,14 +10,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
-        'ENGINE':   'django.db.backends.mysql',
-        'NAME':     'url_shortner',
-        'USER':     'jay',
-        'PASSWORD': 'jay',
-        'HOST':     '',
-        'PORT':     '',
-    }
+
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
